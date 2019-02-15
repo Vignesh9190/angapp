@@ -1,0 +1,115 @@
+<div class="col-md-6">  
+  <h2 class="text-center">{{empformlabel}}</h2>  
+  <form [formGroup]="addForm" novalidate class="form">  
+    <div class="form-group">  
+      <label for="empId">Employee Id:</label>  
+      <input type="number" formControlName="id" placeholder="Id" name="empId" class="form-control" id="empId">  
+    </div>  
+  
+    <div class="form-group">  
+      <label for="empName">Employee Name:</label>  
+      <input formControlName="employee_name" placeholder="Employee Name" name="empName" class="form-control" id="empName">  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_name').hasError('required') && addForm.get('employee_name').touched">  
+        Employee Name is required  
+      </div>  
+    </div>  
+  
+    <div class="form-group">  
+      <label for="empEmail">Employee Email:</label>  
+      <input formControlName="employee_emailId" placeholder="Employee Email" name="empEmail" class="form-control" id="empEmail">  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_emailId').hasError('required') && addForm.get('employee_emailId').touched">  
+        Employee Email Id is required.  
+      </div> 
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_emailId').hasError('pattern')">
+        Email is failed to match the perfect email pattern
+      </div>   
+    </div>  
+  
+    <div class="form-group" >  
+      <label for="empDob">Employee Dob:</label>  
+      <input type="text" formControlName="employee_dob" placeholder="mm/dd/yyyy" name="empDob" class="form-control" id="empDob">  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_dob').hasError('required') && addForm.get('employee_dob').touched">  
+        Employee dob is required.  
+      </div>  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_dob').dirty && addForm.get('employee_dob').errors && addForm.get('employee_dob').errors.dobError ">
+        Age should be in greater than 18 years
+    </div>
+    </div>  
+
+    <div class="form-group">  
+      <label for="empRole">Employee Role:</label>  
+      <select class="form-control" id="empRole" formControlName="employee_role" name="empRole">
+        <option value="" selected>Choose here</option>
+        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+      </select>
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_role').hasError('required') && addForm.get('employee_role').touched">  
+        Employee role is required.  
+      </div>  
+    </div>
+
+    <div class="form-group">  
+      <label for="empDoj">Employee DOJ:</label>  
+      <input formControlName="employee_doj" placeholder="mm/dd/yyyy" name="empDoj" class="form-control" id="empDoj">  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_doj').hasError('required') && addForm.get('employee_doj').touched">  
+        Employee doj is required.  
+      </div> 
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_doj').dirty && addForm.get('employee_doj').errors && addForm.get('employee_doj').errors.dojError ">
+        Employee doj should not be greater than present day.
+    </div>
+       
+    </div>
+
+    <div class="form-group">  
+      <label for="empExp">Employee EXP:</label>  
+      <input formControlName="employee_exp" placeholder="Employee exp" name="empExp" class="form-control" id="empExp" disabled>  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_exp').hasError('required') && addForm.get('employee_exp').touched">  
+        Employee exp is required.  
+      </div>  
+    </div>
+
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="btnvisibility" (click)="onSubmit()">Save</button>  
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="!btnvisibility" (click)="onUpdate()">Update</button>  
+  
+    <p>Form value: {{ addForm.value | json }} </p>  
+    <p>{{ addForm.invalid }}</p>
+  </form>  
+</div> 
+
+
+<!-- <div class="col-md-6">  
+  <h2 class="text-center">{{empformlabel}}</h2>  
+  <form [formGroup]="addForm" novalidate class="form">  
+    <div class="form-group">  
+      <label for="empId">Employee Id:</label>  
+      <input type="number" formControlName="id" placeholder="Id" name="empId" class="form-control" id="empId">  
+    </div>  
+  
+    <div class="form-group">  
+      <label for="empName">Employee Name:</label>  
+      <input formControlName="employee_name" placeholder="Employee Name" name="empName" class="form-control" id="empName">  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_name').hasError('required') && addForm.get('employee_name').touched">  
+        Employee Name is required  
+      </div>  
+    </div>  
+  
+    <div class="form-group">  
+      <label for="empSalary">Employee Salary:</label>  
+      <input formControlName="employee_salary" placeholder="Employee Salary" name="employee_salary" class="form-control" id="employee_salary">  
+      <div class="alert  alert-danger" *ngIf="addForm.get('employee_salary').hasError('maxlength') && addForm.get('employee_salary').touched">  
+        Employee Salary is required and should less than 9 characters.  
+      </div>  
+    </div>  
+  
+    <div class="form-group">  
+      <label for="empAge">Employee Age:</label>  
+      <input formControlName="employee_age" placeholder="Employee Age" name="empAge" class="form-control" id="empAge">  
+      <div class="alert  alert-danger" *ngIf=" addForm.get('employee_age').hasError('maxlength') && addForm.get('employee_age').touched">  
+        Age is required and should less than 3 characters.  
+      </div>  
+    </div>  
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="btnvisibility" (click)="onSubmit()">Save</button>  
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="!btnvisibility" (click)="onUpdate()">Update</button>  
+  
+    <p>Form value: {{ addForm.value | json }}</p>  
+  </form>  
+</div> -->

@@ -1,0 +1,49 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "employee_name": "EMP001",
+      "employee_emailId": "EMP001@gmail.com",
+      "employee_dob": "04/26/1994",
+      "employee_role": "Software Engineer",
+      "employee_doj": "02/04/2018",
+      "employee_exp": "1 year"
+    },
+    {
+      "id": 2,
+      "employee_name": "Emp002",
+      "employee_emailId": "emp002@gmail.com",
+      "employee_dob": "04/26/1994",
+      "employee_role": "Senior Software Engineer",
+      "employee_doj": "02/04/2018",
+      "employee_exp": "1 year"
+    },
+    {
+      "id": 3,
+      "employee_name": "EMP003",
+      "employee_emailId": "EMP003@gmail.com",
+      "employee_dob": "04/26/1994",
+      "employee_role": "Technical Architect",
+      "employee_doj": "02/04/2018",
+      "employee_exp": "1 year"
+    },
+    {
+      "id": 4,
+      "employee_name": "EMP004",
+      "employee_emailId": "EMP004@gmail.com",
+      "employee_dob": "04/26/1994",
+      "employee_role": "Senior Technical Architect",
+      "employee_doj": "02/04/2018",
+      "employee_exp": "1 year"
+    },
+    {
+      "id": 5,
+      "employee_name": "EMP005",
+      "employee_emailId": "emp005@gmail.com",
+      "employee_dob": "07/25/1996",
+      "employee_role": "Technical Architect",
+      "employee_doj": "07/25/2005",
+      "employee_exp": "14 year"
+    }
+  ]
+}
